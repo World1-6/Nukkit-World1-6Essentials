@@ -1,94 +1,114 @@
 package Utils;
 
-import java.util.ArrayList;
 import Commands.afk;
 import Commands.fly;
+import Events.OnJoin;
 import World16.World16.World16.Main;
 import cn.nukkit.Player;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class API {
 
-  ArrayList<String> Afk1 = afk.Afk;
-  ArrayList<String> Fly1 = fly.Fly;
-  
-  //VAR
-  public static String PERMISSION_ERROR_MESSAGE = Translate.chat("[&9World1-6&r] &cYou Do Not Have Permission To Use This Command.");
-  //END OF VAR
+    HashMap<String, String> keyDataM = OnJoin.keydatam;
+    ArrayList<String> Afk1 = afk.Afk;
+    ArrayList<String> Fly1 = fly.Fly;
 
-  private static Main plugin = World16.World16.World16.Main.getInstance();
+    private static Main plugin = Main.plugin;
 
-  // FOR MYSQL
-  public String HOST = plugin.getConfig().getString("MysqlHOST");
-  public String DATABASE = plugin.getConfig().getString("MysqlDATABASE");
-  public String USER = plugin.getConfig().getString("MysqlUSER");
-  public String PASSWORD = plugin.getConfig().getString("MysqlPASSWORD");
-  public String PORT = plugin.getConfig().getString("MysqlPORT");
-  // END MYSQL
+    // FOR MYSQL
+    public String HOST = plugin.getConfig().getString("MysqlHOST");
+    public String DATABASE = plugin.getConfig().getString("MysqlDATABASE");
+    public String USER = plugin.getConfig().getString("MysqlUSER");
+    public String PASSWORD = plugin.getConfig().getString("MysqlPASSWORD");
+    public String PORT = plugin.getConfig().getString("MysqlPORT");
+    // END MYSQL
 
-  // MAIN
-  public API() {
+    // MAIN
+    public API() {
 
-  }
-
-  // END MAIN
-  // START OF MYSQL
-  public String getHOST() {
-    return HOST;
-  }
-
-  public void setHOST(String hOST) {
-    HOST = hOST;
-  }
-
-  public String getDATABASE() {
-    return DATABASE;
-  }
-
-  public void setDATABASE(String dATABASE) {
-    DATABASE = dATABASE;
-  }
-
-  public String getUSER() {
-    return USER;
-  }
-
-  public void setUSER(String uSER) {
-    USER = uSER;
-  }
-
-  public String getPASSWORD() {
-    return PASSWORD;
-  }
-
-  public void setPASSWORD(String pASSWORD) {
-    PASSWORD = pASSWORD;
-  }
-
-  public String getPORT() {
-    return PORT;
-  }
-
-  public void setPORT(String pORT) {
-    PORT = pORT;
-  }
-  // END OF MYSQL
-
-  public boolean isAfk(Player target) {
-    if (Afk1.contains(target)) {
-      return true;
     }
-    // if (Afk1.contains(p.getDisplayName())) { return true; }
-    return false;
-  }
 
-  public boolean isFlying(Player target) {
-    if (Fly1.contains(target.getDisplayName())) {
-      return true;
+    // END MAIN
+    // START OF MYSQL
+
+    public String getHOST() {
+        return HOST;
     }
-    return false;
-  }
-  /*
-   * public void PermissionErrorMessage(Player p) { p.sendMessage(
-   * Translate.chat("[&9World1-6&r] &cYou Do Not Have Permission To Use This Command.")); }
-   */
+
+    public String getDATABASE() {
+        return DATABASE;
+    }
+
+    public String getUSER() {
+        return USER;
+    }
+
+    public String getPASSWORD() {
+        return PASSWORD;
+    }
+
+    public String getPORT() {
+        return PORT;
+    }
+    // END OF MYSQL
+
+    public boolean isAfk(Player p) {
+        if (Afk1.contains(p.getDisplayName())) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    //TODO FIX isFlying
+//  public boolean isFlying(Player p) {
+//    if (Fly1.contains(p.getDisplayName()) || p.isFlying()) {
+//      return true;
+//    } else {
+//      return false;
+//    }
+//  }
+
+    public void clearArrayListandHashMapsWithName(Player p) {
+        keyDataM.remove(p.getDisplayName());
+        this.plugin.getLogger().info("Class: Utils.API has cleared the HashMap of Events.OnJoin.keyDatam For Player: " + p.getDisplayName());
+        Afk1.remove(p.getDisplayName());
+        this.plugin.getLogger().info("Class: Utils.API has cleared the ArrayList of Commands.afk.Afk For Player: " + p.getDisplayName());
+        Fly1.remove(p.getDisplayName());
+        this.plugin.getLogger().info("Class: Utils.API has cleared the ArrayList of Commands.fly.Fly For Player: " + p.getDisplayName());
+    }
+
+    public void clearArrayListandHashMaps(Player p) {
+        keyDataM.clear();
+        this.plugin.getLogger().info("Class: Utils.API has cleared the HashMap of Events.OnJoin.keyDatam For EVERY PLAYER");
+        Afk1.clear();
+        this.plugin.getLogger().info("Class: Utils.API has cleared the ArrayList of Commands.afk.Afk For EVERY PLAYER");
+        Fly1.clear();
+        this.plugin.getLogger().info("Class: Utils.API has cleared the ArrayList of Commands.fly.Fly For EVERY PLAYER");
+    }
+
+    public void clearAllHahsMapsWithName(Player p) {
+        keyDataM.remove(p.getDisplayName());
+        this.plugin.getLogger().info("Class: Utils.API has cleared the HashMap of Events.OnJoin.keyDatam For Player: " + p.getDisplayName());
+    }
+
+    public void clearAllArrayLists(Player p) {
+        Afk1.clear();
+        this.plugin.getLogger().info("Class: Utils.API has cleared the ArrayList of Commands.afk.Afk For EVERY PLAYER");
+        Fly1.clear();
+        this.plugin.getLogger().info("Class: Utils.API has cleared the ArrayList of Commands.fly.Fly For EVERY PLAYER");
+    }
+
+    public void clearAllHashMaps(Player p) {
+        keyDataM.clear();
+        this.plugin.getLogger().info("Class: Utils.API has cleared the HashMap of Events.OnJoin.keyDatam For EVERY PLAYER");
+    }
+
+    public void PermissionErrorMessage(Player p) {
+        p.sendMessage(
+                Translate.chat("[&9World1-6&r] &cYou Do Not Have Permission To Use This Command."));
+    }
+
+    public static String PERMISSION_ERROR_MESSAGE = Translate.chat("[&9World1-6&r] &cYou Do Not Have Permission To Use This Command.");
 }

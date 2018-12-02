@@ -15,6 +15,7 @@ public class colors extends Command {
   public colors(String name) {
     super(name);
     this.setPermission("world16." + name + "." + "permission");
+    this.plugin.getServer().getCommandMap().register("colors", this);
   }
 
   @Override

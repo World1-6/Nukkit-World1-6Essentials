@@ -22,6 +22,7 @@ public class fly extends Command {
     super(name);
     this.gamemmode = Server.getInstance().getGamemode();
     this.setPermission("world16." + name + "." + "permission");
+    this.plugin.getServer().getCommandMap().register("fly", this);
   }
 
   @Override

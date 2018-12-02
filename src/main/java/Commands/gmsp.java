@@ -17,6 +17,7 @@ public class gmsp extends Command {
     super(name);
     this.setPermission("world16." + name + "." + "permission");
     this.setAliases(new String[] {"gm3"});
+    this.plugin.getServer().getCommandMap().register("gmsp", this);
   }
 
   @Override

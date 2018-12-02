@@ -19,6 +19,7 @@ public class afk extends Command {
   public afk(String name) {
     super(name);
     this.setPermission("world16." + name + "." + "permission");
+    this.plugin.getServer().getCommandMap().register("afk", this);
   }
 
   @Override

@@ -16,6 +16,7 @@ public class feed extends Command {
   public feed(String name) {
     super(name);
     this.setPermission("world16." + name + "." + "permission");
+    this.plugin.getServer().getCommandMap().register("feed", this);
   }
 
   public boolean execute(CommandSender sender, String label, String[] args) {

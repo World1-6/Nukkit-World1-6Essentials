@@ -14,15 +14,20 @@ import Commands.gmsp;
 import Commands.heal;
 import Commands.night;
 import Commands.sign;
+import Events.OnJoin;
+import Events.OnLeave;
 import Utils.Translate;
 import cn.nukkit.Player;
 import cn.nukkit.command.Command;
 import cn.nukkit.command.CommandSender;
 import cn.nukkit.plugin.PluginBase;
 
+import java.util.HashMap;
+
 public class Main extends PluginBase {
 
   public static Main plugin;
+  HashMap<String, String> keyDataM = OnJoin.keydatam;
 
   public static Main getInstance() {
     return plugin;
@@ -43,8 +48,8 @@ public class Main extends PluginBase {
     plugin = this;
     YmlConfigGen();
     FileConfigGen();
-    eventsEnable();
-    commandsEnable();
+    regEvents();
+    regCommands();
     getLogger().info("[World1-6Essentials] is now loaded!");
     // START OF UPDATER
     // FROM https://www.spigotmc.org/resources/api-pluginupdater-with-website.5578/
@@ -52,30 +57,33 @@ public class Main extends PluginBase {
   }
 
   public void onDisable() {
+    //JUST IN CASE
+    keyDataM.clear();
     getLogger().info("[World1-6Essentials] is now disabled.");
   }
 
-  public void commandsEnable() {
-    getServer().getCommandMap().register("afk", (Command) new afk("afk"));
-    getServer().getCommandMap().register("bed", (Command) new bed("bed"));
-    getServer().getCommandMap().register("colors", (Command) new colors("colors"));
-    getServer().getCommandMap().register("day", (Command) new day("day"));
-    getServer().getCommandMap().register("echest", (Command) new echest("echest"));
-    getServer().getCommandMap().register("feed", (Command) new feed("feed"));
-    getServer().getCommandMap().register("fly", (Command) new fly("fly"));
-    getServer().getCommandMap().register("clear", (Command) new clear("clear"));
+  public void regCommands() {
+    new afk("afk");
+    new bed("bed");
+    new clear("clear");
+    new colors("colors");
+    new day("day");
+    new echest("echest");
+    new feed("feed");
+    new fly("fly");
     //
-    getServer().getCommandMap().register("gmc", (Command) new gmc("gmc"));
-    getServer().getCommandMap().register("gms", (Command) new gms("gms"));
-    getServer().getCommandMap().register("gmsp", (Command) new gmsp("gmsp"));
+    new gmc("gmc");
+    new gms("gms");
+    new gmsp("gmsp");
     //
-    getServer().getCommandMap().register("heal", (Command) new heal("heal"));
-    getServer().getCommandMap().register("night", (Command) new night("night"));
-    getServer().getCommandMap().register("sign", (Command) new sign("sign"));
+    new heal("heal");
+    new night("night");
+    new sign("sign");
   }
 
-  public void eventsEnable() {
-
+  public void regEvents() {
+    new OnJoin(this);
+    new OnLeave(this);
   }
 
   public void FileConfigGen() {
@@ -92,11 +100,11 @@ public class Main extends PluginBase {
 
       if (cmd.getName().equalsIgnoreCase("World1-6Ess")) {
         if (args.length == 0) {
-          p.sendMessage(Translate.chat("&6Made By Andrew121410#2035"));
+          p.sendMessage(Translate.chat("&6Made By Andrew121410 My -> Discord: Andrew121410#2035"));
           return true;
         }
       }
     }
-    return false;
+    return true;
   }
 }

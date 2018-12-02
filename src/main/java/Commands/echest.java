@@ -13,9 +13,10 @@ public class echest extends Command {
   
   private static Main plugin = Main.getInstance();
 
-  public echest(String name) {
+  public echest(String name){
     super(name);
     this.setPermission("world16." + name + "." + "permission");
+    this.plugin.getServer().getCommandMap().register("echest", this);
   }
 
   @Override
