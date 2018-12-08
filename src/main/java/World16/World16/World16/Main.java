@@ -1,20 +1,8 @@
 package World16.World16.World16;
 
-import Commands.afk;
-import Commands.bed;
-import Commands.clear;
-import Commands.colors;
-import Commands.day;
-import Commands.echest;
-import Commands.feed;
-import Commands.fly;
-import Commands.gmc;
-import Commands.gms;
-import Commands.gmsp;
-import Commands.heal;
-import Commands.night;
-import Commands.sign;
+import Commands.*;
 import Events.OnJoin;
+import Events.OnJoinTittle;
 import Events.OnLeave;
 import Utils.Translate;
 import cn.nukkit.Player;
@@ -79,19 +67,21 @@ public class Main extends PluginBase {
     new heal("heal");
     new night("night");
     new sign("sign");
+    new debug("debug1-6");
   }
 
   public void regEvents() {
     new OnJoin(this);
+//    new OnJoinTittle(this); -> TODO TO FIX
     new OnLeave(this);
   }
 
   public void FileConfigGen() {
-
+    this.saveDefaultConfig();
+    this.saveConfig();
   }
 
   public void YmlConfigGen() {
-
   }
 
   public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {

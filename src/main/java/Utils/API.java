@@ -5,6 +5,7 @@ import Commands.fly;
 import Events.OnJoin;
 import World16.World16.World16.Main;
 import cn.nukkit.Player;
+import cn.nukkit.plugin.Plugin;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,7 +16,8 @@ public class API {
     ArrayList<String> Afk1 = afk.Afk;
     ArrayList<String> Fly1 = fly.Fly;
 
-    private static Main plugin = Main.plugin;
+    private static Plugin plugin = Main.plugin;
+
 
     // FOR MYSQL
     public String HOST = plugin.getConfig().getString("MysqlHOST");
@@ -61,14 +63,14 @@ public class API {
             return false;
         }
     }
-    //TODO FIX isFlying
-//  public boolean isFlying(Player p) {
-//    if (Fly1.contains(p.getDisplayName()) || p.isFlying()) {
-//      return true;
-//    } else {
-//      return false;
-//    }
-//  }
+
+    public boolean isFlying(Player p) {
+        if (Fly1.contains(p.getDisplayName())) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     public void clearArrayListandHashMapsWithName(Player p) {
         keyDataM.remove(p.getDisplayName());
@@ -79,7 +81,7 @@ public class API {
         this.plugin.getLogger().info("Class: Utils.API has cleared the ArrayList of Commands.fly.Fly For Player: " + p.getDisplayName());
     }
 
-    public void clearArrayListandHashMaps(Player p) {
+    public void clearArrayListandHashMaps() {
         keyDataM.clear();
         this.plugin.getLogger().info("Class: Utils.API has cleared the HashMap of Events.OnJoin.keyDatam For EVERY PLAYER");
         Afk1.clear();
@@ -93,14 +95,14 @@ public class API {
         this.plugin.getLogger().info("Class: Utils.API has cleared the HashMap of Events.OnJoin.keyDatam For Player: " + p.getDisplayName());
     }
 
-    public void clearAllArrayLists(Player p) {
+    public void clearAllArrayLists() {
         Afk1.clear();
         this.plugin.getLogger().info("Class: Utils.API has cleared the ArrayList of Commands.afk.Afk For EVERY PLAYER");
         Fly1.clear();
         this.plugin.getLogger().info("Class: Utils.API has cleared the ArrayList of Commands.fly.Fly For EVERY PLAYER");
     }
 
-    public void clearAllHashMaps(Player p) {
+    public void clearAllHashMaps() {
         keyDataM.clear();
         this.plugin.getLogger().info("Class: Utils.API has cleared the HashMap of Events.OnJoin.keyDatam For EVERY PLAYER");
     }
@@ -109,6 +111,5 @@ public class API {
         p.sendMessage(
                 Translate.chat("[&9World1-6&r] &cYou Do Not Have Permission To Use This Command."));
     }
-
-    public static String PERMISSION_ERROR_MESSAGE = Translate.chat("[&9World1-6&r] &cYou Do Not Have Permission To Use This Command.");
+    public static final String PERMISSION_ERROR_MESSAGE = "[&9World1-6&r] &cYou Do Not Have Permission To Use This Command.";
 }
