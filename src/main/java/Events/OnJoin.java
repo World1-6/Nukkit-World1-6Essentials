@@ -5,7 +5,6 @@ import cn.nukkit.Player;
 import cn.nukkit.event.EventHandler;
 import cn.nukkit.event.Listener;
 import cn.nukkit.event.player.PlayerJoinEvent;
-
 import java.util.HashMap;
 
 public class OnJoin implements Listener {
@@ -27,6 +26,7 @@ public class OnJoin implements Listener {
         //REMOVES THE SET JOIN MESSAGE
         event.setJoinMessage("");
 
-        this.plugin.getServer().broadcastMessage(Utils.Translate.chat("[&9World1-6&r] &6Welcome Back! " + p.getDisplayName()));
+        this.plugin.getServer().broadcastMessage(
+            Utils.Translate.chat("[&9World1-6&r] &6Welcome Back! " + p.getDisplayName()));
     }
 }

@@ -2,29 +2,32 @@ package Utils;
 
 import Commands.afk;
 import Commands.fly;
-import Events.OnJoin;
 import World16.World16.World16.Main;
 import cn.nukkit.Player;
 import cn.nukkit.plugin.Plugin;
-
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class API {
 
-    HashMap<String, String> keyDataM = OnJoin.keydatam;
     ArrayList<String> Afk1 = afk.Afk;
     ArrayList<String> Fly1 = fly.Fly;
 
     private static Plugin plugin = Main.plugin;
 
+    //finals
+    public static final Integer VERSION = 1;
+    public static final String DATE_OF_VERSION = "12/29/2018";
+    public static final String PREFIX = "[&9World1-6Ess&r]";
+    public static final String USELESS = "" + PREFIX + "->[&bUSELESS&r]";
 
     // FOR MYSQL
-    public String HOST = plugin.getConfig().getString("MysqlHOST");
-    public String DATABASE = plugin.getConfig().getString("MysqlDATABASE");
-    public String USER = plugin.getConfig().getString("MysqlUSER");
-    public String PASSWORD = plugin.getConfig().getString("MysqlPASSWORD");
-    public String PORT = plugin.getConfig().getString("MysqlPORT");
+    private String HOST = plugin.getConfig().getString("MysqlHOST");
+    private String DATABASE = plugin.getConfig().getString("MysqlDATABASE");
+    private String USER = plugin.getConfig().getString("MysqlUSER");
+    private String PASSWORD = plugin.getConfig().getString("MysqlPASSWORD");
+    private String PORT = plugin.getConfig().getString("MysqlPORT");
     // END MYSQL
 
     // MAIN
@@ -36,23 +39,23 @@ public class API {
     // START OF MYSQL
 
     public String getHOST() {
-        return HOST;
+        return this.HOST;
     }
 
     public String getDATABASE() {
-        return DATABASE;
+        return this.DATABASE;
     }
 
     public String getUSER() {
-        return USER;
+        return this.USER;
     }
 
     public String getPASSWORD() {
-        return PASSWORD;
+        return this.PASSWORD;
     }
 
     public String getPORT() {
-        return PORT;
+        return this.PORT;
     }
     // END OF MYSQL
 
@@ -72,44 +75,27 @@ public class API {
         }
     }
 
-    public void clearArrayListandHashMapsWithName(Player p) {
-        keyDataM.remove(p.getDisplayName());
-        this.plugin.getLogger().info("Class: Utils.API has cleared the HashMap of Events.OnJoin.keyDatam For Player: " + p.getDisplayName());
-        Afk1.remove(p.getDisplayName());
-        this.plugin.getLogger().info("Class: Utils.API has cleared the ArrayList of Commands.afk.Afk For Player: " + p.getDisplayName());
-        Fly1.remove(p.getDisplayName());
-        this.plugin.getLogger().info("Class: Utils.API has cleared the ArrayList of Commands.fly.Fly For Player: " + p.getDisplayName());
+    public ArrayList<String> getAfkArrayList() {
+        return Afk1;
     }
 
-    public void clearArrayListandHashMaps() {
-        keyDataM.clear();
-        this.plugin.getLogger().info("Class: Utils.API has cleared the HashMap of Events.OnJoin.keyDatam For EVERY PLAYER");
-        Afk1.clear();
-        this.plugin.getLogger().info("Class: Utils.API has cleared the ArrayList of Commands.afk.Afk For EVERY PLAYER");
-        Fly1.clear();
-        this.plugin.getLogger().info("Class: Utils.API has cleared the ArrayList of Commands.fly.Fly For EVERY PLAYER");
+    public String FormatTime(LocalDateTime time) {
+        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("MM-dd-yyyy HH:mm:ss");
+        String formattedDate = time.format(myFormatObj);
+
+        return formattedDate;
     }
 
-    public void clearAllHahsMapsWithName(Player p) {
-        keyDataM.remove(p.getDisplayName());
-        this.plugin.getLogger().info("Class: Utils.API has cleared the HashMap of Events.OnJoin.keyDatam For Player: " + p.getDisplayName());
-    }
+    public String Time() {
+        LocalDateTime time = LocalDateTime.now();
+        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("MM-dd-yyyy HH:mm:ss");
+        String formattedDate = time.format(myFormatObj);
 
-    public void clearAllArrayLists() {
-        Afk1.clear();
-        this.plugin.getLogger().info("Class: Utils.API has cleared the ArrayList of Commands.afk.Afk For EVERY PLAYER");
-        Fly1.clear();
-        this.plugin.getLogger().info("Class: Utils.API has cleared the ArrayList of Commands.fly.Fly For EVERY PLAYER");
-    }
-
-    public void clearAllHashMaps() {
-        keyDataM.clear();
-        this.plugin.getLogger().info("Class: Utils.API has cleared the HashMap of Events.OnJoin.keyDatam For EVERY PLAYER");
+        return formattedDate;
     }
 
     public void PermissionErrorMessage(Player p) {
         p.sendMessage(
-                Translate.chat("[&9World1-6&r] &cYou Do Not Have Permission To Use This Command."));
+            Translate.chat(this.PREFIX + " &cYou Do Not Have Permission To Use This Command."));
     }
-    public static final String PERMISSION_ERROR_MESSAGE = "[&9World1-6&r] &cYou Do Not Have Permission To Use This Command.";
 }
