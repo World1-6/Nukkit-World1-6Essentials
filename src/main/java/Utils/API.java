@@ -17,7 +17,7 @@ public class API {
 
     private static Plugin plugin = Main.plugin;
 
-    //CustomYmlManger yml = new CustomYmlManger();
+    CustomYmlManger yml = new CustomYmlManger();
 
     //finals
     public static final Integer VERSION = 1;
