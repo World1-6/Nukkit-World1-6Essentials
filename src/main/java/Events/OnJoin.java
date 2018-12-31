@@ -1,5 +1,7 @@
 package Events;
 
+import Utils.API;
+import Utils.Translate;
 import World16.World16.World16.Main;
 import cn.nukkit.Player;
 import cn.nukkit.event.EventHandler;
@@ -11,6 +13,8 @@ public class OnJoin implements Listener {
 
     public static HashMap<String, String> keydatam = new HashMap<String, String>();
     private Main plugin;
+
+    API api = new API();
 
     public OnJoin(World16.World16.World16.Main getPlugin) {
         this.plugin = getPlugin;
@@ -28,5 +32,10 @@ public class OnJoin implements Listener {
 
         this.plugin.getServer().broadcastMessage(
             Utils.Translate.chat("[&9World1-6&r] &6Welcome Back! " + p.getDisplayName()));
+        this.version(p);
+    }
+
+    public void version(Player p) {
+        p.sendMessage(Translate.chat("&4World1-6Ess Last Time Updated Was " + api.DATE_OF_VERSION));
     }
 }

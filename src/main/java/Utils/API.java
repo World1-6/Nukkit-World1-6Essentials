@@ -11,10 +11,13 @@ import java.util.ArrayList;
 
 public class API {
 
+    //HashMap<String, String> keyDataM = OnJoin.keyDataM;
     ArrayList<String> Afk1 = afk.Afk;
     ArrayList<String> Fly1 = fly.Fly;
 
     private static Plugin plugin = Main.plugin;
+
+    //CustomYmlManger yml = new CustomYmlManger();
 
     //finals
     public static final Integer VERSION = 1;
@@ -68,7 +71,7 @@ public class API {
     }
 
     public boolean isFlying(Player p) {
-        if (Fly1.contains(p.getDisplayName())) {
+        if (Fly1.contains(p.getDisplayName())/** || p.isFlying()**/) {
             return true;
         } else {
             return false;
@@ -77,6 +80,55 @@ public class API {
 
     public ArrayList<String> getAfkArrayList() {
         return Afk1;
+    }
+
+    public void clearArrayListandHashMapsWithName(Player p) {
+//        keyDataM.remove(p.getDisplayName());
+//        this.plugin.getServer().getConsoleSender().sendMessage(Translate.chat(this.USELESS
+//            + " Class: Utils.API has cleared the HashMap of Events.OnJoin.keyDataM For Player: " + p
+//            .getDisplayName()));
+        Afk1.remove(p.getDisplayName());
+        this.plugin.getServer().getConsoleSender().sendMessage(Translate.chat(this.USELESS
+            + " Class: Utils.API has cleared the ArrayList of Commands.afk.Afk For Player: " + p
+            .getDisplayName()));
+        Fly1.remove(p.getDisplayName());
+        this.plugin.getServer().getConsoleSender().sendMessage(Translate.chat(this.USELESS
+            + " Class: Utils.API has cleared the ArrayList of Commands.fly.Fly For Player: " + p
+            .getDisplayName()));
+    }
+
+    public void clearArrayListandHashMaps() {
+//        keyDataM.clear();
+//        this.plugin.getServer().getConsoleSender().sendMessage(Translate.chat(this.USELESS
+//            + " Class: Utils.API has cleared the HashMap of Events.OnJoin.keyDataM For EVERY PLAYER"));
+        Afk1.clear();
+        this.plugin.getServer().getConsoleSender().sendMessage(Translate.chat(this.USELESS
+            + " Class: Utils.API has cleared the ArrayList of Commands.afk.Afk For EVERY PLAYER"));
+        Fly1.clear();
+        this.plugin.getServer().getConsoleSender().sendMessage(Translate.chat(this.USELESS
+            + " Class: Utils.API has cleared the ArrayList of Commands.fly.Fly For EVERY PLAYER"));
+    }
+
+    public void clearAllHahsMapsWithName(Player p) {
+//        keyDataM.remove(p.getDisplayName());
+//        this.plugin.getServer().getConsoleSender().sendMessage(Translate.chat(this.USELESS
+//            + " Class: Utils.API has cleared the HashMap of Events.OnJoin.keyDataM For Player: " + p
+//            .getDisplayName()));
+    }
+
+    public void clearAllArrayLists() {
+        Afk1.clear();
+        this.plugin.getServer().getConsoleSender().sendMessage(Translate.chat(this.USELESS
+            + " Class: Utils.API has cleared the ArrayList of Commands.afk.Afk For EVERY PLAYER"));
+        Fly1.clear();
+        this.plugin.getServer().getConsoleSender().sendMessage(Translate.chat(this.USELESS
+            + " Class: Utils.API has cleared the ArrayList of Commands.fly.Fly For EVERY PLAYER"));
+    }
+
+    public void clearAllHashMaps() {
+//        keyDataM.clear();
+//        this.plugin.getServer().getConsoleSender().sendMessage(Translate.chat(this.USELESS
+//            + " Class: Utils.API has cleared the HashMap of Events.OnJoin.keyDataM For EVERY PLAYER"));
     }
 
     public String FormatTime(LocalDateTime time) {
