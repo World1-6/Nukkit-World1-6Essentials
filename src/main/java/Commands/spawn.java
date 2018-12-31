@@ -14,11 +14,12 @@ public class spawn extends Command {
 
   private static Main plugin = Main.getInstance();
   API api = new API();
-  CustomYmlManger yml = new CustomYmlManger();
+  private CustomYmlManger yml = null;
 
-  public spawn(String name) {
+  public spawn(String name, CustomYmlManger yml) {
     super(name);
     this.setPermission("world16." + name + "." + "permission");
+    this.yml = yml;
     this.plugin.getServer().getCommandMap().register("spawn", this);
   }
 
@@ -35,19 +36,19 @@ public class spawn extends Command {
       return true;
     }
 
-    double x = yml.getshit().getInt("Spawn.Data.X");
-    double y = yml.getshit().getInt("Spawn.Data.Y");
-    double z = yml.getshit().getInt("Spawn.Data.Z");
-    float yaw = (float) yml.getshit().getInt("Spawn.Data.Yaw");
-    float pitch = (float) yml.getshit().getInt("Spawn.Data.Pitch");
-    Level world = this.plugin.getServer()
-        .getLevelByName(yml.getshit().getString("Spawn.Data.World"));
+    double x = Double.parseDouble(yml.getshit().getString("Spawn.Data.X"));
+    double y = Double.parseDouble(yml.getshit().getString("Spawn.Data.Y"));
+    double z = Double.parseDouble(yml.getshit().getString("Spawn.Data.Z"));
+    double yaw = Double.parseDouble(yml.getshit().getString("Spawn.Data.Yaw"));
+    double pitch = Double.parseDouble(yml.getshit().getString("Spawn.Data.Pitch"));
+    Level world = this.plugin.getServer().getLevelByName(yml.getshit().getString("Spawn.Data.World"));
 
     Location spawn = new Location(x, y, z, yaw, pitch, world);
     //
     if (args.length == 0) {
       p.teleport(spawn);
       p.sendMessage(Translate.chat("&6Teleporting..."));
+//      p.sendMessage("X->: " + x + " Y->: " + y + " Z->: " + z + " YAW->: " + yaw + " PITCH->: " + pitch); <-- DEBUG
       return true;
     } else {
       Player target = plugin.getServer().getPlayerExact(args[0]);

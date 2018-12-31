@@ -84,8 +84,8 @@ public class Main extends PluginBase {
     new night("night");
     new sign("sign");
     new debug("debug1-6");
-    new setspawn("setspawn");
-    new spawn("spawn");
+    new setspawn("setspawn", customyml);
+    new spawn("spawn", customyml);
   }
 
   public void regEvents() {

@@ -12,11 +12,12 @@ public class setspawn extends Command {
 
   private static Main plugin = Main.getInstance();
   API api = new API();
-  CustomYmlManger yml = new CustomYmlManger();
+  private CustomYmlManger yml = null;
 
-  public setspawn(String name) {
+  public setspawn(String name, CustomYmlManger yml) {
     super(name);
     this.setPermission("world16." + name + "." + "permission");
+    this.yml = yml;
     this.plugin.getServer().getCommandMap().register("setspawn", this);
   }
 
@@ -32,23 +33,25 @@ public class setspawn extends Command {
       p.sendMessage(api.PERMISSION_ERROR_MESSAGE);
       return true;
     }
-    double x = p.getLocation().getX();
-    double y = p.getLocation().getY();
-    double z = p.getLocation().getZ();
+    int x = (int) p.getLocation().getX();
+    int y = (int) p.getLocation().getY();
+    int z = (int) p.getLocation().getZ();
     double yaw = p.getLocation().getYaw();
     double pitch = p.getLocation().getPitch();
     String worldName = p.getLevel().getName();
     // FileConfiguration file = plugin.getConfig();
 
-    yml.getshit().set("Spawn.Data.X", Double.valueOf(x));
-    yml.getshit().set("Spawn.Data.Y", Double.valueOf(y));
-    yml.getshit().set("Spawn.Data.Z", Double.valueOf(z));
-    yml.getshit().set("Spawn.Data.Yaw", Float.valueOf(String.valueOf(yaw)));
-    yml.getshit().set("Spawn.Data.Pitch", Float.valueOf(String.valueOf(pitch)));
+    yml.getshit().set("Spawn.Data.X", String.valueOf(x));
+    yml.getshit().set("Spawn.Data.Y", String.valueOf(y));
+    yml.getshit().set("Spawn.Data.Z", String.valueOf(z));
+    yml.getshit().set("Spawn.Data.Yaw", String.valueOf(yaw));
+    yml.getshit().set("Spawn.Data.Pitch", String.valueOf(pitch));
+
     yml.getshit().set("Spawn.Data.World", worldName);
     yml.getshit().set("Spawn.Player.Data.NAME", p.getDisplayName());
     yml.getshit().set("Spawn.Player.Data.UUID", p.getUniqueId().toString());
     yml.saveshit();
+//    p.sendMessage("X->: " + x + " Y->: " + y + " Z->: " + z + " YAW->: " + yaw + " PITCH->: " + pitch); <-- DEBUG
     p.sendMessage(Translate.chat("&6Spawn location set for group default."));
     return true;
   }
