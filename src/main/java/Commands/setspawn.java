@@ -33,13 +33,12 @@ public class setspawn extends Command {
       p.sendMessage(api.PERMISSION_ERROR_MESSAGE);
       return true;
     }
-    int x = (int) p.getLocation().getX();
-    int y = (int) p.getLocation().getY();
-    int z = (int) p.getLocation().getZ();
+    double x = p.getLocation().getX();
+    double y = p.getLocation().getY();
+    double z = p.getLocation().getZ();
     double yaw = p.getLocation().getYaw();
     double pitch = p.getLocation().getPitch();
     String worldName = p.getLevel().getName();
-    // FileConfiguration file = plugin.getConfig();
 
     yml.getshit().set("Spawn.Data.X", String.valueOf(x));
     yml.getshit().set("Spawn.Data.Y", String.valueOf(y));

@@ -16,8 +16,7 @@ public class API {
     ArrayList<String> Fly1 = fly.Fly;
 
     private static Plugin plugin = Main.plugin;
-
-    CustomYmlManger yml = new CustomYmlManger();
+    private CustomYmlManger yml = null;
 
     //finals
     public static final Integer VERSION = 1;
@@ -36,7 +35,11 @@ public class API {
 
     // MAIN
     public API() {
+    }
 
+    //MAIN 2
+    public API(CustomYmlManger yml) {
+        this.yml = yml;
     }
 
     // END MAIN
