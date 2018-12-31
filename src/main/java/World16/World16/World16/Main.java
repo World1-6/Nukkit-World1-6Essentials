@@ -1,20 +1,36 @@
 package World16.World16.World16;
 
-import Commands.*;
+import Commands.afk;
+import Commands.bed;
+import Commands.clear;
+import Commands.colors;
+import Commands.day;
+import Commands.debug;
+import Commands.echest;
+import Commands.feed;
+import Commands.fly;
+import Commands.gmc;
+import Commands.gms;
+import Commands.gmsp;
+import Commands.heal;
+import Commands.night;
+import Commands.setspawn;
+import Commands.sign;
+import Commands.spawn;
 import Events.OnJoin;
-import Events.OnJoinTittle;
 import Events.OnLeave;
+import Utils.CustomYmlManger;
 import Utils.Translate;
 import cn.nukkit.Player;
 import cn.nukkit.command.Command;
 import cn.nukkit.command.CommandSender;
 import cn.nukkit.plugin.PluginBase;
-
 import java.util.HashMap;
 
 public class Main extends PluginBase {
 
   public static Main plugin;
+  private CustomYmlManger customyml;
   HashMap<String, String> keyDataM = OnJoin.keydatam;
 
   public static Main getInstance() {
@@ -34,7 +50,7 @@ public class Main extends PluginBase {
   @Override
   public void onEnable() {
     plugin = this;
-    YmlConfigGen();
+    CustomYmlConfigGEN();
     FileConfigGen();
     regEvents();
     regCommands();
@@ -68,6 +84,8 @@ public class Main extends PluginBase {
     new night("night");
     new sign("sign");
     new debug("debug1-6");
+    new setspawn("setspawn");
+    new spawn("spawn");
   }
 
   public void regEvents() {
@@ -81,7 +99,13 @@ public class Main extends PluginBase {
     this.saveConfig();
   }
 
-  public void YmlConfigGen() {
+  public void CustomYmlConfigGEN() {
+    customyml = new CustomYmlManger();
+    // Shit.yml
+    customyml.setupshit();
+    customyml.saveshit();
+    customyml.reloadshit();
+    // END OF Shit.yml
   }
 
   public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
