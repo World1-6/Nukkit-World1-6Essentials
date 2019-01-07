@@ -7,7 +7,6 @@ import World16.World16.World16.Main;
 import cn.nukkit.Player;
 import cn.nukkit.command.Command;
 import cn.nukkit.command.CommandSender;
-import cn.nukkit.level.Level;
 import cn.nukkit.level.Location;
 
 public class spawn extends Command {
@@ -35,15 +34,7 @@ public class spawn extends Command {
       p.sendMessage(api.PERMISSION_ERROR_MESSAGE);
       return true;
     }
-
-    double x = Double.parseDouble(yml.getshit().getString("Spawn.Data.X"));
-    double y = Double.parseDouble(yml.getshit().getString("Spawn.Data.Y"));
-    double z = Double.parseDouble(yml.getshit().getString("Spawn.Data.Z"));
-    double yaw = Double.parseDouble(yml.getshit().getString("Spawn.Data.Yaw"));
-    double pitch = Double.parseDouble(yml.getshit().getString("Spawn.Data.Pitch"));
-    Level world = this.plugin.getServer().getLevelByName(yml.getshit().getString("Spawn.Data.World"));
-
-    Location spawn = new Location(x, y, z, yaw, pitch, world);
+    Location spawn = this.yml.apiGetSpawn("Default");
     //
     if (args.length == 0) {
       p.teleport(spawn);

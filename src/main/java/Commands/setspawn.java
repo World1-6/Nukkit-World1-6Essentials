@@ -40,16 +40,7 @@ public class setspawn extends Command {
     double pitch = p.getLocation().getPitch();
     String worldName = p.getLevel().getName();
 
-    yml.getshit().set("Spawn.Data.X", String.valueOf(x));
-    yml.getshit().set("Spawn.Data.Y", String.valueOf(y));
-    yml.getshit().set("Spawn.Data.Z", String.valueOf(z));
-    yml.getshit().set("Spawn.Data.Yaw", String.valueOf(yaw));
-    yml.getshit().set("Spawn.Data.Pitch", String.valueOf(pitch));
-
-    yml.getshit().set("Spawn.Data.World", worldName);
-    yml.getshit().set("Spawn.Player.Data.NAME", p.getDisplayName());
-    yml.getshit().set("Spawn.Player.Data.UUID", p.getUniqueId().toString());
-    yml.saveshit();
+    this.yml.apiSetSpawn(p, x, y, z, yaw, pitch, worldName, "Default");
 //    p.sendMessage("X->: " + x + " Y->: " + y + " Z->: " + z + " YAW->: " + yaw + " PITCH->: " + pitch); <-- DEBUG
     p.sendMessage(Translate.chat("&6Spawn location set for group default."));
     return true;
