@@ -96,9 +96,6 @@ public class Main extends PluginBase {
     customyml.saveshit();
     customyml.reloadshit();
     // END OF Shit.yml
-    customyml.newshit();
-    customyml.getnewshit().save();
-    customyml.getnewshit().reload();
   }
 
   public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {

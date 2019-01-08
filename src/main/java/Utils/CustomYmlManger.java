@@ -1,8 +1,6 @@
 package Utils;
 
 import World16.World16.World16.Main;
-import cc.summermc.bukkitYaml.file.FileConfiguration;
-import cc.summermc.bukkitYaml.file.YamlConfiguration;
 import cn.nukkit.Player;
 import cn.nukkit.level.Level;
 import cn.nukkit.level.Location;
@@ -17,10 +15,8 @@ public class CustomYmlManger {
   private API api = new API();
 
   // Files & File Configs Here.
-  public FileConfiguration shitcfg;
+  public Config shitcfg;
   public File shitfile;
-  public Config newshitcfg;
-  public File newshitfile;
 
   // --------------------------------------------------------------------------------------------------------
   public void setupshit() {
@@ -41,26 +37,21 @@ public class CustomYmlManger {
       }
     }
 
-    shitcfg = YamlConfiguration.loadConfiguration(shitfile);
+    shitcfg = new Config(shitfile);
   }
 
-  public FileConfiguration getshit() {
+  public Config getshit() {
     return shitcfg;
   }
 
   public void saveshit() {
-    try {
-      shitcfg.save(shitfile);
-      Bukkit.getServer().getConsoleSender()
-          .sendMessage(Translate.chat(api.USELESS + " &aThe shit.yml has been saved."));
-    } catch (IOException e) {
-      Bukkit.getServer().getConsoleSender()
-          .sendMessage(Translate.chat(api.USELESS + " &cThe shit.yml has been NOT SAVED.."));
-    }
+    shitcfg.save(shitfile);
+    Bukkit.getServer().getConsoleSender()
+        .sendMessage(Translate.chat(api.USELESS + " &aThe shit.yml has been saved."));
   }
 
   public void reloadshit() {
-    shitcfg = YamlConfiguration.loadConfiguration(shitfile);
+    shitcfg.reload();
     Bukkit.getServer().getConsoleSender()
         .sendMessage(Translate.chat(api.USELESS + " &6The shit.yml has been reloaded."));
 //        // END OF SHIT YML
@@ -92,30 +83,5 @@ public class CustomYmlManger {
     this.getshit().set("Spawn." + spawnname + ".Player.Data.NAME", p.getDisplayName());
     this.getshit().set("Spawn." + spawnname + ".Player.Data.UUID", p.getUniqueId().toString());
     this.saveshit();
-  }
-
-  public void newshit() {
-    if (!plugin.getDataFolder().exists()) {
-      plugin.getDataFolder().mkdir();
-    }
-    newshitfile = new File(plugin.getDataFolder(), "newshit.yml");
-
-    if (!shitfile.exists()) {
-      try {
-        shitfile.createNewFile();
-        Bukkit.getServer().getConsoleSender()
-            .sendMessage(Translate.chat(api.USELESS + " The shit.yml has been created."));
-      } catch (IOException e) {
-        Bukkit.getServer().getConsoleSender()
-            .sendMessage(Translate
-                .chat(api.USELESS + " The shit.yml could not make for some reason."));
-      }
-    }
-
-    newshitcfg = new Config(newshitfile);
-  }
-
-  public Config getnewshit(){
-    return newshitcfg;
   }
 }

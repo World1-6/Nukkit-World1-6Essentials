@@ -21,8 +21,8 @@ public class API {
     public static final String DATE_OF_VERSION = "1/7/2019";
     public static final String PREFIX = "[&9World1-6Ess&r]";
     public static final String USELESS = "" + PREFIX + "->[&bUSELESS&r]";
-    public static final String TOO_DAMN_OLD = "Your mc version is too damn old 1.11 up too 1.13.2 please.";
-    public static final String SOMETHING_WENT_WRONG = "Something went wrong.";
+    //    public static final String TOO_DAMN_OLD = "Your mc version is too damn old 1.11 up too 1.13.2 please.";
+//    public static final String SOMETHING_WENT_WRONG = "Something went wrong.";
     public static final String PERMISSION_ERROR_MESSAGE = Translate.chat(PREFIX + " &cYou Do Not Have Permission To Use This Command.");
 
     // FOR MYSQL
