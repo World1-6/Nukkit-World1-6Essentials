@@ -25,13 +25,12 @@ import cn.nukkit.Player;
 import cn.nukkit.command.Command;
 import cn.nukkit.command.CommandSender;
 import cn.nukkit.plugin.PluginBase;
-import java.util.HashMap;
 
 public class Main extends PluginBase {
 
-  public static Main plugin;
+  private static Main plugin;
   private CustomYmlManger customyml;
-  HashMap<String, String> keyDataM = OnJoin.keydatam;
+//  HashMap<String, String> keyDataM = OnJoin.keydatam;
 
   public static Main getInstance() {
     return plugin;
@@ -53,7 +52,7 @@ public class Main extends PluginBase {
 
   public void onDisable() {
     //JUST IN CASE
-    keyDataM.clear();
+//    keyDataM.clear();
     getLogger().info("[World1-6Essentials] is now disabled.");
   }
 
@@ -97,6 +96,9 @@ public class Main extends PluginBase {
     customyml.saveshit();
     customyml.reloadshit();
     // END OF Shit.yml
+    customyml.newshit();
+    customyml.getnewshit().save();
+    customyml.getnewshit().reload();
   }
 
   public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {

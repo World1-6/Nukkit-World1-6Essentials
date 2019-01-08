@@ -6,6 +6,7 @@ import cc.summermc.bukkitYaml.file.YamlConfiguration;
 import cn.nukkit.Player;
 import cn.nukkit.level.Level;
 import cn.nukkit.level.Location;
+import cn.nukkit.utils.Config;
 import java.io.File;
 import java.io.IOException;
 
@@ -18,6 +19,8 @@ public class CustomYmlManger {
   // Files & File Configs Here.
   public FileConfiguration shitcfg;
   public File shitfile;
+  public Config newshitcfg;
+  public File newshitfile;
 
   // --------------------------------------------------------------------------------------------------------
   public void setupshit() {
@@ -89,5 +92,30 @@ public class CustomYmlManger {
     this.getshit().set("Spawn." + spawnname + ".Player.Data.NAME", p.getDisplayName());
     this.getshit().set("Spawn." + spawnname + ".Player.Data.UUID", p.getUniqueId().toString());
     this.saveshit();
+  }
+
+  public void newshit() {
+    if (!plugin.getDataFolder().exists()) {
+      plugin.getDataFolder().mkdir();
+    }
+    newshitfile = new File(plugin.getDataFolder(), "newshit.yml");
+
+    if (!shitfile.exists()) {
+      try {
+        shitfile.createNewFile();
+        Bukkit.getServer().getConsoleSender()
+            .sendMessage(Translate.chat(api.USELESS + " The shit.yml has been created."));
+      } catch (IOException e) {
+        Bukkit.getServer().getConsoleSender()
+            .sendMessage(Translate
+                .chat(api.USELESS + " The shit.yml could not make for some reason."));
+      }
+    }
+
+    newshitcfg = new Config(newshitfile);
+  }
+
+  public Config getnewshit(){
+    return newshitcfg;
   }
 }
