@@ -31,7 +31,7 @@ public class sign extends Command {
       p.sendMessage(api.PERMISSION_ERROR_MESSAGE);
       return true;
     }
-    Item item1 = new Item(Item.SIGN, 1);
+    Item item1 = new Item(Item.SIGN);
     p.getInventory().addItem(item1);
     return true;
   }

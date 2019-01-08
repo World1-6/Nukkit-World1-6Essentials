@@ -31,7 +31,7 @@ public class bed extends Command {
       p.sendMessage(api.PERMISSION_ERROR_MESSAGE);
       return true;
     }
-    Item item1 = new Item(Item.BED, 1);
+    Item item1 = new Item(Item.BED);
     p.getInventory().addItem(item1);
     return true;
   }

@@ -37,12 +37,6 @@ public class Main extends PluginBase {
     return plugin;
   }
 
-  // MySQL mysql = new MySQL(Main.plugin.getConfig().getString("MysqlHOST"),
-  // Main.plugin.getConfig().getString("MysqlDATABASE"),
-  // Main.plugin.getConfig().getString("MysqlUSER"),
-  // Main.plugin.getConfig().getString("MysqlPASSWORD"));
-  // GOT THE MYSQL API AT https://www.spigotmc.org/resources/simple-easy-mysql-api.36447/
-  // GOT THE TITLE API AT https://www.spigotmc.org/resources/titleapi-1-8-1-13.1325/
   public void onLoad() {
     plugin = this;
   }
@@ -55,9 +49,6 @@ public class Main extends PluginBase {
     regEvents();
     regCommands();
     getLogger().info("[World1-6Essentials] is now loaded!");
-    // START OF UPDATER
-    // FROM https://www.spigotmc.org/resources/api-pluginupdater-with-website.5578/
-    // FINISH OF UPDATER
   }
 
   public void onDisable() {
