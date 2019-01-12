@@ -7,11 +7,11 @@ import cn.nukkit.event.EventHandler;
 import cn.nukkit.event.Listener;
 import cn.nukkit.event.player.PlayerJoinEvent;
 
-public class OnJoinTittle implements Listener {
+public class OnJoinTittleEvent implements Listener {
 
     private Main plugin;
 
-    public OnJoinTittle(World16.World16.World16.Main getPlugin) {
+    public OnJoinTittleEvent(World16.World16.World16.Main getPlugin) {
         this.plugin = getPlugin;
 
         this.plugin.getServer().getPluginManager().registerEvents(this, this.plugin);

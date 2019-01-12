@@ -7,12 +7,12 @@ import cn.nukkit.event.EventHandler;
 import cn.nukkit.event.Listener;
 import cn.nukkit.event.player.PlayerQuitEvent;
 
-public class OnLeave implements Listener {
+public class OnLeaveEvent implements Listener {
 
     private Main plugin;
     API api = new API();
 
-    public OnLeave(World16.World16.World16.Main getPlugin) {
+    public OnLeaveEvent(World16.World16.World16.Main getPlugin) {
         this.plugin = getPlugin;
 
         this.plugin.getServer().getPluginManager().registerEvents(this, this.plugin);
@@ -22,9 +22,6 @@ public class OnLeave implements Listener {
     public void OnLEAVE(PlayerQuitEvent event) {
 
         Player p = event.getPlayer();
-
-        //Clear HASHMAPS AND ARRAYLISTS
-        api.clearArrayListandHashMapsWithName(p);
 
         //SET THE DEFAULT QUIT MESSAGE TO NOTHING.
         event.setQuitMessage("");

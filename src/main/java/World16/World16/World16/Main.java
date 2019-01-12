@@ -5,7 +5,6 @@ import Commands.bed;
 import Commands.clear;
 import Commands.colors;
 import Commands.day;
-import Commands.debug;
 import Commands.echest;
 import Commands.feed;
 import Commands.fly;
@@ -17,8 +16,9 @@ import Commands.night;
 import Commands.setspawn;
 import Commands.sign;
 import Commands.spawn;
-import Events.OnJoin;
-import Events.OnLeave;
+import Events.OnDeathEvent;
+import Events.OnJoinEvent;
+import Events.OnLeaveEvent;
 import Utils.CustomYmlManger;
 import Utils.Translate;
 import cn.nukkit.Player;
@@ -30,7 +30,7 @@ public class Main extends PluginBase {
 
   private static Main plugin;
   private CustomYmlManger customyml;
-//  HashMap<String, String> keyDataM = OnJoin.keydatam;
+//  HashMap<String, String> keyDataM = OnJoinEvent.keydatam;
 
   public static Main getInstance() {
     return plugin;
@@ -73,15 +73,16 @@ public class Main extends PluginBase {
     new heal("heal");
     new night("night");
     new sign("sign");
-    new debug("debug1-6");
+//    new debug("debug1-6");
     new setspawn("setspawn", customyml);
     new spawn("spawn", customyml);
   }
 
   public void regEvents() {
-    new OnJoin(this);
-//    new OnJoinTittle(this); -> TODO TO FIX
-    new OnLeave(this);
+    new OnJoinEvent(this);
+//    new OnJoinTittleEvent(this); -> TODO TO FIX
+    new OnLeaveEvent(this);
+    new OnDeathEvent(this);
   }
 
   public void FileConfigGen() {

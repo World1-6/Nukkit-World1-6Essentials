@@ -2,17 +2,21 @@ package Utils;
 
 import Commands.afk;
 import Commands.fly;
+import Events.OnDeathEvent;
 import World16.World16.World16.Main;
 import cn.nukkit.Player;
+import cn.nukkit.level.Location;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 
 public class API {
 
-    //    HashMap<String, String> keyDataM = OnJoin.keyDataM;
+    //    HashMap<String, String> keyDataM = OnJoinEvent.keyDataM;
     ArrayList<String> Afk1 = afk.Afk;
     ArrayList<String> Fly1 = fly.Fly;
+    LinkedHashMap<String, Location> backmap = OnDeathEvent.backmap;
 
     private static Main plugin = Main.getInstance();
 
@@ -100,55 +104,6 @@ public class API {
 
     public ArrayList<String> getAfkArrayList() {
         return Afk1;
-    }
-
-    public void clearArrayListandHashMapsWithName(Player p) {
-//        keyDataM.remove(p.getDisplayName());
-//        this.plugin.getServer().getConsoleSender().sendMessage(Translate.chat(this.USELESS
-//            + " Class: Utils.API has cleared the HashMap of Events.OnJoin.keyDataM For Player: " + p
-//            .getDisplayName()));
-        Afk1.remove(p.getDisplayName());
-        this.plugin.getServer().getConsoleSender().sendMessage(Translate.chat(this.USELESS
-            + " Class: Utils.API has cleared the ArrayList of Commands.afk.Afk For Player: " + p
-            .getDisplayName()));
-        Fly1.remove(p.getDisplayName());
-        this.plugin.getServer().getConsoleSender().sendMessage(Translate.chat(this.USELESS
-            + " Class: Utils.API has cleared the ArrayList of Commands.fly.Fly For Player: " + p
-            .getDisplayName()));
-    }
-
-    public void clearArrayListandHashMaps() {
-//        keyDataM.clear();
-//        this.plugin.getServer().getConsoleSender().sendMessage(Translate.chat(this.USELESS
-//            + " Class: Utils.API has cleared the HashMap of Events.OnJoin.keyDataM For EVERY PLAYER"));
-        Afk1.clear();
-        this.plugin.getServer().getConsoleSender().sendMessage(Translate.chat(this.USELESS
-            + " Class: Utils.API has cleared the ArrayList of Commands.afk.Afk For EVERY PLAYER"));
-        Fly1.clear();
-        this.plugin.getServer().getConsoleSender().sendMessage(Translate.chat(this.USELESS
-            + " Class: Utils.API has cleared the ArrayList of Commands.fly.Fly For EVERY PLAYER"));
-    }
-
-    public void clearAllHahsMapsWithName(Player p) {
-//        keyDataM.remove(p.getDisplayName());
-//        this.plugin.getServer().getConsoleSender().sendMessage(Translate.chat(this.USELESS
-//            + " Class: Utils.API has cleared the HashMap of Events.OnJoin.keyDataM For Player: " + p
-//            .getDisplayName()));
-    }
-
-    public void clearAllArrayLists() {
-        Afk1.clear();
-        this.plugin.getServer().getConsoleSender().sendMessage(Translate.chat(this.USELESS
-            + " Class: Utils.API has cleared the ArrayList of Commands.afk.Afk For EVERY PLAYER"));
-        Fly1.clear();
-        this.plugin.getServer().getConsoleSender().sendMessage(Translate.chat(this.USELESS
-            + " Class: Utils.API has cleared the ArrayList of Commands.fly.Fly For EVERY PLAYER"));
-    }
-
-    public void clearAllHashMaps() {
-//        keyDataM.clear();
-//        this.plugin.getServer().getConsoleSender().sendMessage(Translate.chat(this.USELESS
-//            + " Class: Utils.API has cleared the HashMap of Events.OnJoin.keyDataM For EVERY PLAYER"));
     }
 
     public String FormatTime(LocalDateTime time) {
