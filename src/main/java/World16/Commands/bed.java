@@ -15,6 +15,7 @@ public class bed extends Command {
   public bed(String name) {
     super(name);
     this.setPermission("world16." + name + "." + "permission");
+    this.setDescription("All it does is gives you a bed.");
     this.plugin.getServer().getCommandMap().register("bed", this);
   }
 

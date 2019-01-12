@@ -16,6 +16,7 @@ public class echest extends Command {
   public echest(String name){
     super(name);
     this.setPermission("world16." + name + "." + "permission");
+    this.setDescription("Open's your EnderChest");
     this.plugin.getServer().getCommandMap().register("echest", this);
   }
 

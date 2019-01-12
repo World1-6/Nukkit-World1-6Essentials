@@ -16,6 +16,7 @@ public class clear extends Command {
   public clear(String name) {
     super(name);
     this.setPermission("world16." + name + "." + "permission");
+    this.setDescription("Clear's the inventory");
     this.plugin.getServer().getCommandMap().register("clear", this);
   }
 

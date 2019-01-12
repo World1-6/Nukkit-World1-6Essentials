@@ -15,6 +15,7 @@ public class night extends Command {
   public night(String name) {
     super(name);
     this.setPermission("world16." + name + "." + "permission");
+    this.setDescription("Set's the time too night.");
     this.plugin.getServer().getCommandMap().register("night", this);
   }
 

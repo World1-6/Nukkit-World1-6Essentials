@@ -19,6 +19,7 @@ public class setspawn extends Command {
     this.setPermission("world16." + name + "." + "permission");
     this.yml = yml;
     this.api = new API(this.yml);
+    this.setDescription("Set's the spawn for the world.");
     this.plugin.getServer().getCommandMap().register("setspawn", this);
   }
 

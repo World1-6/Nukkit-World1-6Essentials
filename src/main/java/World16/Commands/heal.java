@@ -16,6 +16,7 @@ public class heal extends Command {
   public heal(String name) {
     super(name);
     this.setPermission("world16." + name + "." + "permission");
+    this.setDescription("Heals you or who ever.");
     this.plugin.getServer().getCommandMap().register("heal", this);
   }
 

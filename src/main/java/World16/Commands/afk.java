@@ -18,6 +18,7 @@ public class afk extends Command {
   public afk(String name) {
     super(name);
     this.setPermission("world16." + name + "." + "permission");
+    this.setDescription("When you go away from your device use this.");
     this.plugin.getServer().getCommandMap().register("afk", this);
   }
 

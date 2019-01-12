@@ -17,6 +17,7 @@ public class gmc extends Command {
     super(name);
     this.setPermission("world16." + name + "." + "permission");
     this.setAliases(new String[] {"gm1"});
+    this.setDescription("Set's your or who ever gammemode too creative.");
     this.plugin.getServer().getCommandMap().register("gmc", this);
   }
 

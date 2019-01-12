@@ -15,6 +15,7 @@ public class day extends Command {
   public day(String name) {
     super(name);
     this.setPermission("world16." + name + "." + "permission");
+    this.setDescription("Set's the time to day.");
     this.plugin.getServer().getCommandMap().register("day", this);
   }
 

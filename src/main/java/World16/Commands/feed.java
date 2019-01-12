@@ -16,6 +16,7 @@ public class feed extends Command {
   public feed(String name) {
     super(name);
     this.setPermission("world16." + name + "." + "permission");
+    this.setDescription("Feeds you or who ever.");
     this.plugin.getServer().getCommandMap().register("feed", this);
   }
 

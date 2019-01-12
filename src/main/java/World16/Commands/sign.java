@@ -15,6 +15,7 @@ public class sign extends Command {
   public sign(String name) {
     super(name);
     this.setPermission("world16." + name + "." + "permission");
+    this.setDescription("Give's you a sign that's all.");
     this.plugin.getServer().getCommandMap().register("sign", this);
   }
 
