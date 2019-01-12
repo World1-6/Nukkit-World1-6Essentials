@@ -19,6 +19,7 @@ import World16.Commands.spawn;
 import World16.Events.OnDeathEvent;
 import World16.Events.OnJoinEvent;
 import World16.Events.OnLeaveEvent;
+import World16.Utils.API;
 import World16.Utils.CustomYmlManger;
 import World16.Utils.Translate;
 import cn.nukkit.Player;
@@ -30,6 +31,7 @@ public class Main extends PluginBase {
 
   private static Main plugin;
   private CustomYmlManger customyml;
+  private API api;
 //  HashMap<String, String> keyDataM = OnJoinEvent.keydatam;
 
   public static Main getInstance() {
@@ -97,6 +99,10 @@ public class Main extends PluginBase {
     customyml.saveshit();
     customyml.reloadshit();
     // END OF Shit.yml
+  }
+
+  public void regAPIS() {
+    api = new API(this.customyml);
   }
 
   public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {

@@ -11,13 +11,14 @@ import cn.nukkit.command.CommandSender;
 public class setspawn extends Command {
 
   private static Main plugin = Main.getInstance();
-  API api = new API();
+  API api;
   private CustomYmlManger yml = null;
 
   public setspawn(String name, CustomYmlManger yml) {
     super(name);
     this.setPermission("world16." + name + "." + "permission");
     this.yml = yml;
+    this.api = new API(this.yml);
     this.plugin.getServer().getCommandMap().register("setspawn", this);
   }
 
@@ -40,7 +41,7 @@ public class setspawn extends Command {
     double pitch = p.getLocation().getPitch();
     String worldName = p.getLevel().getName();
 
-    this.yml.apiSetSpawn(p, x, y, z, yaw, pitch, worldName, "Default");
+    this.api.SetSpawn(p, x, y, z, yaw, pitch, worldName, "Default");
 //    p.sendMessage("X->: " + x + " Y->: " + y + " Z->: " + z + " YAW->: " + yaw + " PITCH->: " + pitch); <-- DEBUG
     p.sendMessage(Translate.chat("&6Spawn location set for group default."));
     return true;

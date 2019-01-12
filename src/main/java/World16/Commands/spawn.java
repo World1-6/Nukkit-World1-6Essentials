@@ -12,13 +12,14 @@ import cn.nukkit.level.Location;
 public class spawn extends Command {
 
   private static Main plugin = Main.getInstance();
-  API api = new API();
+  API api;
   private CustomYmlManger yml = null;
 
   public spawn(String name, CustomYmlManger yml) {
     super(name);
     this.setPermission("world16." + name + "." + "permission");
     this.yml = yml;
+    this.api = new API(this.yml);
     this.plugin.getServer().getCommandMap().register("spawn", this);
   }
 
@@ -34,7 +35,7 @@ public class spawn extends Command {
       p.sendMessage(api.PERMISSION_ERROR_MESSAGE);
       return true;
     }
-    Location spawn = this.yml.apiGetSpawn("Default");
+    Location spawn = this.api.GetSpawn("Default");
     //
     if (args.length == 0) {
       p.teleport(spawn);
