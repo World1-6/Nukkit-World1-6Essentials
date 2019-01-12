@@ -1,7 +1,7 @@
-package Commands;
+package World16.Commands;
 
-import Utils.API;
-import World16.World16.World16.Main;
+import World16.Main.Main;
+import World16.Utils.API;
 import cn.nukkit.Player;
 import cn.nukkit.command.Command;
 import cn.nukkit.command.CommandSender;

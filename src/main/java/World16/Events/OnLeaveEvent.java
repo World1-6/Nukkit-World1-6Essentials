@@ -1,7 +1,7 @@
-package Events;
+package World16.Events;
 
-import Utils.API;
-import World16.World16.World16.Main;
+import World16.Main.Main;
+import World16.Utils.API;
 import cn.nukkit.Player;
 import cn.nukkit.event.EventHandler;
 import cn.nukkit.event.Listener;
@@ -12,7 +12,7 @@ public class OnLeaveEvent implements Listener {
     private Main plugin;
     API api = new API();
 
-    public OnLeaveEvent(World16.World16.World16.Main getPlugin) {
+    public OnLeaveEvent(Main getPlugin) {
         this.plugin = getPlugin;
 
         this.plugin.getServer().getPluginManager().registerEvents(this, this.plugin);
@@ -26,6 +26,7 @@ public class OnLeaveEvent implements Listener {
         //SET THE DEFAULT QUIT MESSAGE TO NOTHING.
         event.setQuitMessage("");
 
-        this.plugin.getServer().broadcastMessage(Utils.Translate.chat("[&cWorld1-6&r] &5Bye Bye, " + p.getDisplayName()));
+        this.plugin.getServer().broadcastMessage(
+            World16.Utils.Translate.chat("[&cWorld1-6&r] &5Bye Bye, " + p.getDisplayName()));
     }
 }

@@ -1,8 +1,8 @@
-package Commands;
+package World16.Commands;
 
-import Events.OnDeathEvent;
-import Utils.Translate;
-import World16.World16.World16.Main;
+import World16.Events.OnDeathEvent;
+import World16.Main.Main;
+import World16.Utils.Translate;
 import cn.nukkit.Player;
 import cn.nukkit.command.Command;
 import cn.nukkit.command.CommandSender;

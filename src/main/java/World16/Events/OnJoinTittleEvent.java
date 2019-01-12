@@ -1,7 +1,7 @@
-package Events;
+package World16.Events;
 
-import Utils.Translate;
-import World16.World16.World16.Main;
+import World16.Main.Main;
+import World16.Utils.Translate;
 import cn.nukkit.Player;
 import cn.nukkit.event.EventHandler;
 import cn.nukkit.event.Listener;
@@ -11,7 +11,7 @@ public class OnJoinTittleEvent implements Listener {
 
     private Main plugin;
 
-    public OnJoinTittleEvent(World16.World16.World16.Main getPlugin) {
+    public OnJoinTittleEvent(Main getPlugin) {
         this.plugin = getPlugin;
 
         this.plugin.getServer().getPluginManager().registerEvents(this, this.plugin);

@@ -1,6 +1,6 @@
-package Utils;
+package World16.Utils;
 
-import World16.World16.World16.Main;
+import World16.Main.Main;
 import cn.nukkit.Player;
 import cn.nukkit.level.Level;
 import cn.nukkit.level.Location;

@@ -1,21 +1,22 @@
-package Commands;
+package World16.Commands;
 
-import Utils.API;
-import Utils.Translate;
-import World16.World16.World16.Main;
+import World16.Main.Main;
+import World16.Utils.API;
 import cn.nukkit.Player;
 import cn.nukkit.command.Command;
 import cn.nukkit.command.CommandSender;
+import cn.nukkit.level.Sound;
 
-public class night extends Command {
+public class echest extends Command {
 
-  private static Main plugin = Main.getInstance();
   API api = new API();
   
-  public night(String name) {
+  private static Main plugin = Main.getInstance();
+
+  public echest(String name){
     super(name);
     this.setPermission("world16." + name + "." + "permission");
-    this.plugin.getServer().getCommandMap().register("night", this);
+    this.plugin.getServer().getCommandMap().register("echest", this);
   }
 
   @Override
@@ -27,12 +28,13 @@ public class night extends Command {
 
     Player p = (Player) sender;
 
-    if (!p.hasPermission("world16.night.permission")) {
+    if (!p.hasPermission("world16.echest.permission")) {
       p.sendMessage(api.PERMISSION_ERROR_MESSAGE);
       return true;
     }
-    p.getLevel().setTime(13000);
-    p.sendMessage(Translate.chat("&6The time was set to &9night&r."));
+    p.getEnderChestInventory().open(p);
+    // p.playSound(p.getLocation(), Sound.RANDOM_CHESTOPEN, 10.0f, 1.0f);
+    p.getLevel().addSound(p.getLocation(), Sound.RANDOM_CHESTOPEN);
     return true;
   }
 }

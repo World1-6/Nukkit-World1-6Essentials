@@ -1,9 +1,9 @@
-package Commands;
+package World16.Commands;
 
-import Utils.API;
-import Utils.CustomYmlManger;
-import Utils.Translate;
-import World16.World16.World16.Main;
+import World16.Main.Main;
+import World16.Utils.API;
+import World16.Utils.CustomYmlManger;
+import World16.Utils.Translate;
 import cn.nukkit.Player;
 import cn.nukkit.command.Command;
 import cn.nukkit.command.CommandSender;

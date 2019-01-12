@@ -1,9 +1,9 @@
-package Utils;
+package World16.Utils;
 
-import Commands.afk;
-import Commands.fly;
-import Events.OnDeathEvent;
-import World16.World16.World16.Main;
+import World16.Commands.afk;
+import World16.Commands.fly;
+import World16.Events.OnDeathEvent;
+import World16.Main.Main;
 import cn.nukkit.Player;
 import cn.nukkit.level.Location;
 import java.time.LocalDateTime;

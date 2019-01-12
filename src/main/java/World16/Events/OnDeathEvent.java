@@ -1,6 +1,6 @@
-package Events;
+package World16.Events;
 
-import World16.World16.World16.Main;
+import World16.Main.Main;
 import cn.nukkit.Player;
 import cn.nukkit.event.EventHandler;
 import cn.nukkit.event.Listener;

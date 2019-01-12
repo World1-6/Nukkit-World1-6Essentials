@@ -1,8 +1,8 @@
-package Events;
+package World16.Events;
 
-import Utils.API;
-import Utils.Translate;
-import World16.World16.World16.Main;
+import World16.Main.Main;
+import World16.Utils.API;
+import World16.Utils.Translate;
 import cn.nukkit.Player;
 import cn.nukkit.event.EventHandler;
 import cn.nukkit.event.Listener;
@@ -16,7 +16,7 @@ public class OnJoinEvent implements Listener {
 
     API api = new API();
 
-    public OnJoinEvent(World16.World16.World16.Main getPlugin) {
+    public OnJoinEvent(Main getPlugin) {
         this.plugin = getPlugin;
 
         this.plugin.getServer().getPluginManager().registerEvents(this, plugin);
@@ -31,7 +31,7 @@ public class OnJoinEvent implements Listener {
         event.setJoinMessage("");
 
         this.plugin.getServer().broadcastMessage(
-            Utils.Translate.chat("[&9World1-6&r] &6Welcome Back! " + p.getDisplayName()));
+            World16.Utils.Translate.chat("[&9World1-6&r] &6Welcome Back! " + p.getDisplayName()));
         this.version(p);
     }
 
