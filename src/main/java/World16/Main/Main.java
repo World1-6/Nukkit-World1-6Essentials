@@ -1,6 +1,7 @@
 package World16.Main;
 
 import World16.Commands.afk;
+import World16.Commands.back;
 import World16.Commands.bed;
 import World16.Commands.clear;
 import World16.Commands.colors;
@@ -78,6 +79,7 @@ public class Main extends PluginBase {
 //    new debug("debug1-6");
     new setspawn("setspawn", customyml);
     new spawn("spawn", customyml);
+    new back("back", this);
   }
 
   public void regEvents() {

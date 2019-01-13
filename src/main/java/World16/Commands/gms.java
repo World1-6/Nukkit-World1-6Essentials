@@ -17,7 +17,7 @@ public class gms extends Command {
     super(name);
     this.setPermission("world16." + name + "." + "permission");
     this.setAliases(new String[] {"gm0"});
-    this.setDescription("Set's your or who ever gammemode too survival.");
+    this.setDescription("Set's your gammemode too survival or who ever gammemode too survival.");
     this.plugin.getServer().getCommandMap().register("gms", this);
   }
 
