@@ -23,6 +23,9 @@ public class OnLeaveEvent implements Listener {
 
         Player p = event.getPlayer();
 
+        //CLEAR'S ARRAYLIST AND HASHMAP's
+        api.clearArrayListAndHashMaps(p);
+
         //SET THE DEFAULT QUIT MESSAGE TO NOTHING.
         event.setQuitMessage("");
 
