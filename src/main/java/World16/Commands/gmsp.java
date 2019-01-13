@@ -17,7 +17,7 @@ public class gmsp extends Command {
     super(name);
     this.setPermission("world16." + name + "." + "permission");
     this.setAliases(new String[] {"gm3"});
-    this.setDescription("Set's your gamemode too spectator or who ever gamemode too spectator.");
+    this.setDescription("Set's your gamemode too spectator or who's ever gamemode too spectator.");
     this.plugin.getServer().getCommandMap().register("gmsp", this);
   }
 
